@@ -39,7 +39,9 @@ export class FilmsService {
       rows: s.rows,
       seats: s.seats,
       price: s.price,
-      taken: s.taken,
+      taken: s.taken
+        ? s.taken.split(',').map((seat) => seat.trim()).filter(Boolean)
+        : [],
     }));
 
     return { total: items.length, items };
